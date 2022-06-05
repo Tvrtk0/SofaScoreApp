@@ -19,7 +19,7 @@ const StyledFavorites = styled.div`
   }
 `;
 
-export default function favorites() {
+export default function Favorites() {
   const [keys, setKeys] = useState<string[]>([]);
   const [favoriteEvents, setfavoriteEvents] = useState<FullEvent[]>();
 

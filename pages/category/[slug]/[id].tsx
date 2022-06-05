@@ -2,7 +2,7 @@ import { GetServerSideProps } from 'next';
 import React from 'react';
 import { BasicEvent } from '../../../model/Event';
 import EventLink from '../../../modules/Link/EventLink';
-import fetcher from '../../../util/fetch';
+import fetcher, { apiUrl } from '../../../util/fetch';
 
 interface CategoryPageInterface {
   event: BasicEvent[];
@@ -13,13 +13,13 @@ export default function CategoryDetailsPage({ event }: CategoryPageInterface) {
     <ul>
       {event.map((e) => {
         return (
-          <li>
-            <EventLink key={e.id} event={e}>
+          <EventLink key={e.id} event={e}>
+            <li>
               <a>
                 {e.homeTeam.name} {e.homeScore.display} - {e.awayScore.display} {e.awayTeam.name}
               </a>
-            </EventLink>
-          </li>
+            </li>
+          </EventLink>
         );
       })}
     </ul>
@@ -33,7 +33,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     //@ts-ignore
     const { slug, id } = params;
 
-    const data = await fetcher(`https://academy.dev.sofascore.com/api/v1/category/${id}/scheduled-events/2022-05-28`);
+    const data = await fetcher(`${apiUrl}/category/${id}/scheduled-events/2022-05-28`);
 
     const props: CategoryPageInterface = { event: data.events };
 
