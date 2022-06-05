@@ -1,7 +1,10 @@
-import type { NextPage } from "next";
-import Head from "next/head";
+import Head from 'next/head';
+import React from 'react';
+import CategoryList from '../modules/Category/CategoryList';
+import FavoriteEvents from '../modules/Event/FavoriteEvents';
+import ScheduledEvents from '../modules/Event/ScheduledEvents';
 
-const Home: NextPage = () => {
+const Home = () => {
   return (
     <div>
       <Head>
@@ -10,7 +13,12 @@ const Home: NextPage = () => {
         <meta name="author" content="Tvrtko Babić" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>Hello world</h1>
+      <div style={{ display: 'flex', gap: '5rem', position: 'relative' }}>
+        <CategoryList />
+        <ScheduledEvents />
+        {/* <p style={{ position: 'sticky', top: '1rem', height: '100px' }}>Favorite events: </p> */}
+        <FavoriteEvents />
+      </div>
     </div>
   );
 };
