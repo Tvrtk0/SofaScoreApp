@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import useSWR from 'swr';
 import { UniqueTournament } from '../../model/Tournament';
 import { CategoryLoading } from '../../styles/StyledCategories';
-import { apiUrl } from '../../util/fetch';
+import { API_BASENAME } from '../../util/fetch';
 import UniqueTournamentLink from '../Link/UniqueTournamentLink';
 
 interface CategoryTournamentsProps {
@@ -11,7 +11,7 @@ interface CategoryTournamentsProps {
 }
 
 export default function CategoryTournaments({ id }: CategoryTournamentsProps) {
-  const url = `${apiUrl}/unique-tournament/${id}`;
+  const url = `${API_BASENAME}/unique-tournament/${id}`;
   const { data, error } = useSWR(url);
 
   if (!data && !error) {

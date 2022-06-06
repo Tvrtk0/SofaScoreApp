@@ -4,7 +4,7 @@ import useSWR from 'swr';
 import { SportContext } from '../../context/sportContext';
 import { FullEvent } from '../../model/Event';
 import { CategoryLoading } from '../../styles/StyledCategories';
-import { apiUrl } from '../../util/fetch';
+import { API_BASENAME } from '../../util/fetch';
 import EventGroups from './EventGroups';
 
 const StyledScheduledEvents = styled.ul`
@@ -45,7 +45,7 @@ const StyledScheduledEvents = styled.ul`
 
 export default function ScheduledEvents() {
   const sportsInfo = useContext(SportContext);
-  const urlCategoryDetails = `${apiUrl}/sport/${sportsInfo?.sport}/scheduled-events/${sportsInfo?.date}`;
+  const urlCategoryDetails = `${API_BASENAME}/sport/${sportsInfo?.sport}/scheduled-events/${sportsInfo?.date}`;
   const { data, error } = useSWR(urlCategoryDetails);
 
   if (!data && !error) {

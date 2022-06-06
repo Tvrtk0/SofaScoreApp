@@ -1,6 +1,6 @@
 import { GetServerSideProps } from 'next';
 import React from 'react';
-import { apiUrl } from '../../../util/fetch';
+import { API_BASENAME } from '../../../util/fetch';
 import { BasicEvent } from '../../../model/Event';
 import fetcher from '../../../util/fetch';
 import { UniqueTournament } from '../../../model/Tournament';
@@ -20,7 +20,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     //@ts-ignore
     const { slug, id } = params;
 
-    const data = await fetcher(`${apiUrl}/unique-tournament/${id}`);
+    const data = await fetcher(`${API_BASENAME}/unique-tournament/${id}`);
 
     const props: TournamentPageInterface = { tournament: data.uniqueTournament };
 

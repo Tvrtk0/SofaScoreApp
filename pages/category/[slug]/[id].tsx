@@ -2,7 +2,7 @@ import { GetServerSideProps } from 'next';
 import React from 'react';
 import { BasicEvent } from '../../../model/Event';
 import EventLink from '../../../modules/Link/EventLink';
-import fetcher, { apiUrl } from '../../../util/fetch';
+import fetcher, { API_BASENAME } from '../../../util/fetch';
 
 interface CategoryPageInterface {
   event: BasicEvent[];
@@ -33,7 +33,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     //@ts-ignore
     const { slug, id } = params;
 
-    const data = await fetcher(`${apiUrl}/category/${id}/scheduled-events/2022-05-28`);
+    const data = await fetcher(`${API_BASENAME}/category/${id}/scheduled-events/2022-05-28`);
 
     const props: CategoryPageInterface = { event: data.events };
 

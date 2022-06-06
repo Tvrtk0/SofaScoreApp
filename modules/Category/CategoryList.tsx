@@ -4,7 +4,7 @@ import useSWR from 'swr';
 import { SportContext } from '../../context/sportContext';
 import { CategoryInfo } from '../../model/Categories';
 import { CategoryLoading } from '../../styles/StyledCategories';
-import { apiUrl } from '../../util/fetch';
+import { API_BASENAME } from '../../util/fetch';
 import { sortCategories } from '../../util/sort';
 import Category from './Category';
 
@@ -14,7 +14,7 @@ const StyledCategoryList = styled.ul`
 
 export default function CategoryList() {
   const sportsInfo = useContext(SportContext);
-  const urlCategoryDetails = `${apiUrl}/sport/${sportsInfo?.sport}/${sportsInfo?.date}/7200/categories`;
+  const urlCategoryDetails = `${API_BASENAME}/sport/${sportsInfo?.sport}/${sportsInfo?.date}/7200/categories`;
   const { data, error } = useSWR(urlCategoryDetails);
 
   if (!data && !error) {
