@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import useSWR from 'swr';
+import DatePicker from '../../components/DatePicker';
 import Meta from '../../components/Meta';
 import { SportContext } from '../../context/sportContext';
 import { FullEvent } from '../../model/Event';
@@ -20,6 +21,11 @@ const StyledCategoryDetails = styled.section`
   & > h1 {
     text-align: center;
   }
+`;
+
+const StyledDatePicker = styled.div`
+  text-align: center;
+  margin-top: 1.5rem;
 `;
 
 interface CategoryDetailsProps {
@@ -47,6 +53,9 @@ export default function CategoryDetails({ id }: CategoryDetailsProps) {
         description={`${events[0].tournament.category.name} - list of tournaments`}
       />
       <h1>{events[0].tournament.category.name}</h1>
+      <StyledDatePicker>
+        <DatePicker />
+      </StyledDatePicker>
       <EventGroups events={events} />
     </StyledCategoryDetails>
   );

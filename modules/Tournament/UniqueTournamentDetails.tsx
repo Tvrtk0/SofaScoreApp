@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import useSWR from 'swr';
+import DatePicker from '../../components/DatePicker';
 import Meta from '../../components/Meta';
 import { SportContext } from '../../context/sportContext';
 import { FullEvent } from '../../model/Event';
@@ -34,7 +35,6 @@ const StyledEvents = styled.section`
     flex-direction: row;
     flex-wrap: wrap;
     max-width: 1000px;
-    margin-top: 2rem;
 
     & > * {
       flex-grow: 1;
@@ -42,6 +42,11 @@ const StyledEvents = styled.section`
       margin: 0.5rem;
     }
   }
+`;
+
+const StyledDatePicker = styled.div`
+  margin-top: 3rem;
+  margin-bottom: 1rem;
 `;
 
 interface UniqueTournamentDetailsProps {
@@ -85,6 +90,9 @@ export default function UniqueTournamentDetails({ uniqueTournament }: UniqueTour
         {startDateTimestamp} - {endDateTimestamp}
       </p>
       {uniqueTournament.titleHolder && <small>Title holder: {uniqueTournament.titleHolder.name}</small>}
+      <StyledDatePicker>
+        <DatePicker />
+      </StyledDatePicker>
       <StyledEvents>
         <EventGroups events={events} />
       </StyledEvents>
