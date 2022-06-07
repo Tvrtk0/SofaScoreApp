@@ -13,7 +13,7 @@ const StyledDatePicker = styled.div`
     color: ${({ theme }) => theme.colors.text};
 
     &::-webkit-calendar-picker-indicator {
-      filter: invert(100%);
+      ${({ isDarkTheme }: { isDarkTheme: boolean }) => (isDarkTheme ? 'filter: invert(100%);' : '')}
       cursor: pointer;
     }
 
@@ -24,11 +24,11 @@ const StyledDatePicker = styled.div`
 `;
 
 export default function DatePicker() {
-  const sportsInfo = useContext(SportContext);
-  const [selectedDate, setSelectedDate] = useState(sportsInfo?.date);
+  const sportsContext = useContext(SportContext);
+  const [selectedDate, setSelectedDate] = useState(sportsContext?.date);
 
   const handleBlur = () => {
-    if (selectedDate !== sportsInfo?.date) sportsInfo?.setDate(selectedDate!);
+    if (selectedDate !== sportsContext?.date) sportsContext?.setDate(selectedDate!);
   };
 
   const handleDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,7 +36,7 @@ export default function DatePicker() {
   };
 
   return (
-    <StyledDatePicker>
+    <StyledDatePicker isDarkTheme={sportsContext?.isDarkTheme!}>
       <input
         type="date"
         value={selectedDate}

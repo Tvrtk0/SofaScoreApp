@@ -1,8 +1,8 @@
 import type { AppProps } from 'next/app';
 import fetcher from '../util/fetch';
 import { SWRConfig, SWRConfiguration } from 'swr';
-import { ThemeProvider } from 'styled-components';
-import { theme } from '../styles/Theme';
+import { DefaultTheme, ThemeProvider } from 'styled-components';
+import { darkTheme, lightTheme } from '../styles/Theme';
 import GlobalStyles from '../styles/Global';
 import Layout from '../components/Layout';
 import { SportContext } from '../context/sportContext';
@@ -15,6 +15,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const today = new Date().toISOString().split('T')[0];
   const [sport, setSport] = useState<Sports>('football');
   const [date, setDate] = useState<string>(today);
+  const [isDarkTheme, setIsDarkTheme] = useState<boolean>(true);
 
   const changeSport = (param: Sports) => {
     setSport(() => param);
@@ -22,12 +23,17 @@ function MyApp({ Component, pageProps }: AppProps) {
   const changeDate = (param: string) => {
     return setDate(() => param);
   };
+  const changeTheme = () => {
+    setIsDarkTheme((isDarkTheme) => (isDarkTheme = !isDarkTheme));
+  };
 
   return (
     <SWRConfig value={swrConfig}>
-      <SportContext.Provider value={{ sport, setSport: changeSport, date, setDate: changeDate }}>
-        <ThemeProvider theme={theme}>
-          <GlobalStyles theme={theme} />
+      <SportContext.Provider
+        value={{ sport, setSport: changeSport, date, setDate: changeDate, isDarkTheme, setIsDarkTheme: changeTheme }}
+      >
+        <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
+          <GlobalStyles theme={isDarkTheme ? darkTheme : lightTheme} />
           <Layout>
             <Component {...pageProps} />
           </Layout>

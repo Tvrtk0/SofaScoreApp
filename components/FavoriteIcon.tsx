@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { SportContext } from '../context/sportContext';
 import { BasicEvent } from '../model/Event';
 
 const StyledIcon = styled.div`
@@ -14,6 +15,9 @@ interface FavoriteIconProps {
 
 export default function FavoriteIcon({ event }: FavoriteIconProps) {
   const [selected, setSelected] = useState(false);
+  const sportContext = useContext(SportContext);
+  const removeStarUrl = sportContext?.isDarkTheme ? '/img/star1.svg' : '/img/star3.svg';
+  const addStarUrl = sportContext?.isDarkTheme ? '/img/star2.svg' : '/img/star4.svg';
 
   useEffect(() => {
     if (localStorage.getItem(`favoriteEvent-${event.id}`) !== null) {
@@ -38,9 +42,9 @@ export default function FavoriteIcon({ event }: FavoriteIconProps) {
   return (
     <StyledIcon>
       {selected ? (
-        <img src="/img/star1.svg" alt="Remove star" onClick={handleChange} title="Remove this event from favorites" />
+        <img src={removeStarUrl} alt="Remove star" onClick={handleChange} title="Remove this event from favorites" />
       ) : (
-        <img src="/img/star2.svg" alt="Add star" onClick={handleChange} title="Add this event to favorites" />
+        <img src={addStarUrl} alt="Add star" onClick={handleChange} title="Add this event to favorites" />
       )}
     </StyledIcon>
   );

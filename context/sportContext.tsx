@@ -6,6 +6,8 @@ interface SportContextInterface {
   sport: Sports;
   setSport: (param: Sports) => void;
   setDate: (param: string) => void;
+  isDarkTheme: boolean;
+  setIsDarkTheme: () => void;
 }
 
 export const SportContext = React.createContext<SportContextInterface | null>(null);

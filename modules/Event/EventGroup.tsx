@@ -11,6 +11,7 @@ const StyledEventGroup = styled.article`
   padding: 0.6rem 1rem;
   margin: 1rem 0;
   border-radius: 10px;
+  box-shadow: 3px 3px 5px ${({ theme }) => theme.colors.background};
 
   & a {
     color: ${({ theme }) => theme.colors.text};

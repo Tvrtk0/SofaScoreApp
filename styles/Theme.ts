@@ -1,6 +1,6 @@
 import { DefaultTheme } from 'styled-components';
 
-export const theme: DefaultTheme = {
+export const darkTheme: DefaultTheme = {
   fonts: {
     body: '"Roboto", system-ui, sans-serif',
     monospace: '"Roboto Mono", monospace',
@@ -14,6 +14,24 @@ export const theme: DefaultTheme = {
     text: '#d4d4d6',
     textSecondary: '#b1b1b4',
     textTitle: '#fff',
+    light: '#b0b8ca',
+  },
+};
+
+export const lightTheme: DefaultTheme = {
+  fonts: {
+    body: '"Roboto", system-ui, sans-serif',
+    monospace: '"Roboto Mono", monospace',
+  },
+  colors: {
+    primary: '#018786',
+    secondary: '#03DAC6',
+    background: '#e0e0e0',
+    bg1: '#ebebeb',
+    bg2: '#f2f2f2',
+    text: '#212121',
+    textSecondary: '#3c3c46',
+    textTitle: '#000',
     light: '#b0b8ca',
   },
 };

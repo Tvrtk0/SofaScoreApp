@@ -4,6 +4,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { SportContext } from '../context/sportContext';
 import { Sports } from '../model/Sports';
+import ThemeIcon from './ThemeIcon';
 
 const StyledNavbar = styled.nav`
   width: 100%;
@@ -13,6 +14,7 @@ const StyledNavbar = styled.nav`
   & > ul {
     list-style-type: none;
     display: flex;
+    align-items: center;
     gap: 1rem;
   }
 
@@ -61,6 +63,9 @@ export default function Navbar() {
           <Link href={'/'}>
             <a onClick={() => changeSport('tennis')}>Tennis</a>
           </Link>
+        </li>
+        <li>
+          <ThemeIcon />
         </li>
       </ul>
     </StyledNavbar>
