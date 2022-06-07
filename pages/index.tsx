@@ -1,11 +1,10 @@
-import Head from 'next/head';
 import React from 'react';
 import styled from 'styled-components';
 import CategoryList from '../modules/Category/CategoryList';
 import FavoriteEvents from '../modules/Event/FavoriteEvents';
 import ScheduledEvents from '../modules/Event/ScheduledEvents';
 
-const StyledHome = styled.main`
+const StyledHome = styled.section`
   display: flex;
   gap: 5rem;
   flex-wrap: wrap;
@@ -18,13 +17,7 @@ const StyledHome = styled.main`
 
 const Home = () => {
   return (
-    <div>
-      <Head>
-        <title>SofaScore App</title>
-        <meta name="description" content="SofaScore Frontend Academy Project" />
-        <meta name="author" content="Tvrtko Babić" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <>
       <StyledHome>
         <CategoryList />
         <ScheduledEvents />
@@ -32,7 +25,7 @@ const Home = () => {
           <FavoriteEvents />
         </div>
       </StyledHome>
-    </div>
+    </>
   );
 };
 
