@@ -6,12 +6,34 @@ import ScheduledEvents from '../modules/Event/ScheduledEvents';
 
 const StyledHome = styled.section`
   display: flex;
-  gap: 5rem;
+  gap: 3rem;
   flex-wrap: wrap;
-  .sticky {
-    align-self: flex-start;
-    position: sticky;
-    top: 1rem;
+  justify-content: center;
+  margin: 2rem;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileBreakpoint}) {
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    gap: 0;
+  }
+`;
+
+const StyledCategoryList = styled.aside`
+  @media (max-width: ${({ theme }) => theme.breakpoints.breakpoint1}) {
+    display: none;
+  }
+`;
+
+const StyledFavoriteEvents = styled.section`
+  align-self: flex-start;
+  position: sticky;
+  top: 80px;
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileBreakpoint}) {
+    position: relative;
+    align-self: center;
+    top: 0;
   }
 `;
 
@@ -19,11 +41,13 @@ const Home = () => {
   return (
     <>
       <StyledHome>
-        <CategoryList />
+        <StyledCategoryList>
+          <CategoryList />
+        </StyledCategoryList>
         <ScheduledEvents />
-        <div className="sticky">
+        <StyledFavoriteEvents>
           <FavoriteEvents />
-        </div>
+        </StyledFavoriteEvents>
       </StyledHome>
     </>
   );

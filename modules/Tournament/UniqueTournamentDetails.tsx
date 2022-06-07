@@ -15,7 +15,13 @@ const StyledUniqueTournamentDetails = styled.section`
   align-items: center;
   background-color: ${({ theme }) => theme.colors.bg1};
   padding: 2rem;
+  margin: 0 2rem;
   border-radius: 10px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileBreakpoint}) {
+    margin: 0;
+    padding: 1rem;
+  }
 
   & > h1 {
     margin-bottom: 0.5rem;
@@ -32,7 +38,7 @@ const StyledEvents = styled.section`
 
     & > * {
       flex-grow: 1;
-      flex-basis: 200px;
+      flex-basis: 100px;
       margin: 0.5rem;
     }
   }

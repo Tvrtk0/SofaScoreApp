@@ -16,6 +16,10 @@ export const darkTheme: DefaultTheme = {
     textTitle: '#fff',
     light: '#b0b8ca',
   },
+  breakpoints: {
+    mobileBreakpoint: '600px',
+    breakpoint1: '1200px',
+  },
 };
 
 export const lightTheme: DefaultTheme = {
@@ -33,5 +37,9 @@ export const lightTheme: DefaultTheme = {
     textSecondary: '#3c3c46',
     textTitle: '#000',
     light: '#b0b8ca',
+  },
+  breakpoints: {
+    mobileBreakpoint: '600px',
+    breakpoint1: '1200px',
   },
 };

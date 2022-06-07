@@ -8,6 +8,7 @@ const StyledFavorites = styled.div`
     margin-bottom: 2rem;
     text-align: center;
   }
+
   & > section {
     background-color: ${({ theme }) => theme.colors.bg1};
     padding: 1rem 2rem;
@@ -15,6 +16,12 @@ const StyledFavorites = styled.div`
 
     & > h3 {
       text-align: center;
+    }
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileBreakpoint}) {
+    & > h1 {
+      margin-top: 2rem;
     }
   }
 `;

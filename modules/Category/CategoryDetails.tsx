@@ -7,12 +7,15 @@ import { FullEvent } from '../../model/Event';
 import { CategoryLoading } from '../../styles/StyledCategories';
 import { API_BASENAME } from '../../util/fetch';
 import EventGroups from '../Event/EventGroups';
-import EventLink from '../Link/EventLink';
 
 const StyledCategoryDetails = styled.section`
   padding: 2rem;
   border-radius: 10px;
   background-color: ${({ theme }) => theme.colors.bg1};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileBreakpoint}) {
+    padding: 1rem;
+  }
 
   & > h1 {
     text-align: center;

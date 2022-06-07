@@ -16,6 +16,12 @@ const GlobalStyles = createGlobalStyle`
         min-height: 100vh;
     }
 
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileBreakpoint}) {
+        body {
+            background-color: ${({ theme }) => theme.colors.bg1};
+        }
+    }
+
     code {
         font-family: ${({ theme }) => theme.fonts.monospace};
     }
@@ -35,6 +41,8 @@ const GlobalStyles = createGlobalStyle`
         color: ${({ theme }) => theme.colors.background};
         background-color: ${({ theme }) => theme.colors.primary};
     }
+
+    
 `;
 
 export default GlobalStyles;

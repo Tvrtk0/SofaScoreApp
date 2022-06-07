@@ -10,6 +10,7 @@ import Category from './Category';
 
 const StyledCategoryList = styled.ul`
   list-style-type: none;
+  padding: 0;
 `;
 
 export default function CategoryList() {

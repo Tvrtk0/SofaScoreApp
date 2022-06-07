@@ -13,6 +13,10 @@ const StyledScheduledEvents = styled.ul`
   padding: 2rem;
   border-radius: 10px;
 
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileBreakpoint}) {
+    padding: 1rem;
+  }
+
   .dateInput {
     display: flex;
     justify-content: center;
