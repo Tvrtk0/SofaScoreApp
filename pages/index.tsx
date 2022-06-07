@@ -1,8 +1,20 @@
 import Head from 'next/head';
 import React from 'react';
+import styled from 'styled-components';
 import CategoryList from '../modules/Category/CategoryList';
 import FavoriteEvents from '../modules/Event/FavoriteEvents';
 import ScheduledEvents from '../modules/Event/ScheduledEvents';
+
+const StyledHome = styled.main`
+  display: flex;
+  gap: 5rem;
+  flex-wrap: wrap;
+  .sticky {
+    align-self: flex-start;
+    position: sticky;
+    top: 1rem;
+  }
+`;
 
 const Home = () => {
   return (
@@ -13,12 +25,13 @@ const Home = () => {
         <meta name="author" content="Tvrtko Babić" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div style={{ display: 'flex', gap: '5rem', position: 'relative' }}>
+      <StyledHome>
         <CategoryList />
         <ScheduledEvents />
-        {/* <p style={{ position: 'sticky', top: '1rem', height: '100px' }}>Favorite events: </p> */}
-        <FavoriteEvents />
-      </div>
+        <div className="sticky">
+          <FavoriteEvents />
+        </div>
+      </StyledHome>
     </div>
   );
 };

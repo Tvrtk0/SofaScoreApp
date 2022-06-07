@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { FullEvent } from '../../model/Event';
@@ -5,9 +6,21 @@ import Event from './Event';
 import EventGroups from './EventGroups';
 
 const StyledFavoriteEvents = styled.section`
-  position: sticky;
-  top: 1rem;
-  height: 40vh;
+  background-color: ${({ theme }) => theme.colors.bg1};
+  padding: 1.5rem;
+  border-radius: 10px;
+
+  & > h3 {
+    margin-bottom: 1rem;
+    text-align: center;
+    & > a {
+      text-decoration: none;
+      color: ${({ theme }) => theme.colors.text};
+      &:hover {
+        color: ${({ theme }) => theme.colors.primary};
+      }
+    }
+  }
 `;
 
 export default function FavoriteEvents() {
@@ -23,11 +36,11 @@ export default function FavoriteEvents() {
 
   useEffect(() => {
     updateKeys();
-    window.addEventListener('storage', updateKeys);
+    /*window.addEventListener('storage', updateKeys);
 
     return () => {
       window.removeEventListener('storage', updateKeys);
-    };
+    };*/
   }, []);
 
   useEffect(() => {
@@ -43,11 +56,13 @@ export default function FavoriteEvents() {
 
   return (
     <StyledFavoriteEvents>
-      {/* {favoriteEvents?.map((event) => {
-        return <Event key={`fav-${event.id}`} event={event} />;
-      })} */}
-      test
-      {favoriteEvents && <EventGroups events={favoriteEvents!} />}
+      <h3>
+        <Link href={'/favorites'}>Favorites</Link>
+      </h3>
+      {favoriteEvents &&
+        favoriteEvents.slice(-5).map((event) => {
+          return <Event key={`fav-${event.id}`} event={event} />;
+        })}
     </StyledFavoriteEvents>
   );
 }

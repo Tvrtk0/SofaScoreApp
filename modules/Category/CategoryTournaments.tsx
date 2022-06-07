@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import useSWR from 'swr';
 import { UniqueTournament } from '../../model/Tournament';
 import { CategoryLoading } from '../../styles/StyledCategories';
@@ -24,12 +23,10 @@ export default function CategoryTournaments({ id }: CategoryTournamentsProps) {
   const uniqueTournament: UniqueTournament = data.uniqueTournament;
 
   return (
-    // <li title={uniqueTournament.name}>
     <UniqueTournamentLink key={uniqueTournament.id} uniqueTournament={uniqueTournament}>
       <li title={uniqueTournament.name}>
         <a>{uniqueTournament.name}</a>
       </li>
     </UniqueTournamentLink>
-    // </li>
   );
 }
