@@ -14,3 +14,16 @@ export interface UniqueTournament {
   slug: string;
   name: string;
 }
+
+export interface TitleHolder {
+  id: number;
+  name: string;
+  slug: string;
+}
+
+export interface FullUniqueTournament extends UniqueTournament {
+  category: BasicCategory;
+  titleHolder: TitleHolder;
+  startDateTimestamp: number;
+  endDateTimestamp: number;
+}
