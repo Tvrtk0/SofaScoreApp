@@ -21,9 +21,10 @@ export default function Category({ categoryInfo }: CategoryProps) {
         {categoryInfo.category.name}
       </StyledAccordion>
       <StyledAccordionItems clicked={clicked}>
-        {categoryInfo.uniqueTournamentIds?.map((t) => {
-          return <CategoryTournaments key={t} id={t} />;
-        })}
+        {clicked &&
+          categoryInfo.uniqueTournamentIds?.map((tId) => {
+            return <CategoryTournaments key={tId} id={tId} />;
+          })}
 
         <CategoryLink key={categoryInfo.category.id} category={categoryInfo.category}>
           <li title={categoryInfo.category.name}>
