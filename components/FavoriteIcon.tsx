@@ -38,9 +38,9 @@ export default function FavoriteIcon({ event }: FavoriteIconProps) {
   return (
     <StyledIcon>
       {selected ? (
-        <img src="img/star1.svg" alt="Remove star" onClick={handleChange} title="Remove this event from favorites" />
+        <img src="/img/star1.svg" alt="Remove star" onClick={handleChange} title="Remove this event from favorites" />
       ) : (
-        <img src="img/star2.svg" alt="Add star" onClick={handleChange} title="Add this event to favorites" />
+        <img src="/img/star2.svg" alt="Add star" onClick={handleChange} title="Add this event to favorites" />
       )}
     </StyledIcon>
   );
