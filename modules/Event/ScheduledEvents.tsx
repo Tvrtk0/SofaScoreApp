@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import useSWR from 'swr';
+import DatePicker from '../../components/DatePicker';
 import { SportContext } from '../../context/sportContext';
 import { FullEvent } from '../../model/Event';
 import { CategoryLoading } from '../../styles/StyledCategories';
@@ -22,25 +23,12 @@ const StyledScheduledEvents = styled.ul`
     text-align: center;
     margin-bottom: 1rem;
   }
+`;
 
-  input[type='date'] {
-    padding: 0.4rem 0.6rem;
-    font-size: 0.8rem;
-    outline: none;
-    border: 0px;
-    border-radius: 5px;
-    background-color: ${({ theme }) => theme.colors.bg2};
-    color: ${({ theme }) => theme.colors.text};
-
-    &::-webkit-calendar-picker-indicator {
-      filter: invert(100%);
-      cursor: pointer;
-    }
-
-    &:hover {
-      background-color: ${({ theme }) => theme.colors.background};
-    }
-  }
+const StyledDatePicker = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
 `;
 
 export default function ScheduledEvents() {
@@ -55,16 +43,12 @@ export default function ScheduledEvents() {
     return <div>An error has occurred...</div>;
   }
 
-  const handleDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    sportsInfo?.setDate(event.target.value);
-  };
-
   return (
     <StyledScheduledEvents>
       <h2>{sportsInfo?.sport.charAt(0).toUpperCase() + sportsInfo?.sport.slice(1)!}</h2>
-      <div className="dateInput">
-        <input type="date" value={sportsInfo?.date} onChange={(event) => handleDateChange(event)} />
-      </div>
+      <StyledDatePicker>
+        <DatePicker />
+      </StyledDatePicker>
       <EventGroups events={data.events} />
     </StyledScheduledEvents>
   );
