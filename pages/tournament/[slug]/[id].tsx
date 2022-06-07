@@ -1,20 +1,20 @@
 import { GetServerSideProps } from 'next';
 import React from 'react';
 import { API_BASENAME } from '../../../util/fetch';
-import { BasicEvent } from '../../../model/Event';
 import fetcher from '../../../util/fetch';
-import { UniqueTournament } from '../../../model/Tournament';
+import { FullUniqueTournament, UniqueTournament } from '../../../model/Tournament';
+import UniqueTournamentDetails from '../../../modules/Tournament/UniqueTournamentDetails';
 
 interface TournamentPageInterface {
-  tournament: UniqueTournament;
+  uniqueTournament: FullUniqueTournament;
 }
 
-export default function TournamentDetailsPage({ tournament }: TournamentPageInterface) {
-  return <div>{tournament.name}</div>;
+export default function TournamentDetailsPage({ uniqueTournament }: TournamentPageInterface) {
+  return <UniqueTournamentDetails key={uniqueTournament.id} uniqueTournament={uniqueTournament} />;
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { params, res } = context;
+  const { params, res, req } = context;
 
   try {
     //@ts-ignore
@@ -22,7 +22,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
     const data = await fetcher(`${API_BASENAME}/unique-tournament/${id}`);
 
-    const props: TournamentPageInterface = { tournament: data.uniqueTournament };
+    if (data.error !== undefined) {
+      if (data.error.code === 404) {
+        return { notFound: true };
+      }
+    }
+
+    const props: TournamentPageInterface = { uniqueTournament: data.uniqueTournament };
 
     return { props: props };
   } catch (error) {
