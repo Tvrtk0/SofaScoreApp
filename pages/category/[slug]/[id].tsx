@@ -1,29 +1,16 @@
 import { GetServerSideProps } from 'next';
 import React from 'react';
-import { BasicEvent } from '../../../model/Event';
+import { BasicEvent, FullEvent } from '../../../model/Event';
+import CategoryDetails from '../../../modules/Category/CategoryDetails';
 import EventLink from '../../../modules/Link/EventLink';
 import fetcher, { API_BASENAME } from '../../../util/fetch';
 
 interface CategoryPageInterface {
-  event: BasicEvent[];
+  id: number;
 }
 
-export default function CategoryDetailsPage({ event }: CategoryPageInterface) {
-  return (
-    <ul>
-      {event.map((e) => {
-        return (
-          <EventLink key={e.id} event={e}>
-            <li>
-              <a>
-                {e.homeTeam.name} {e.homeScore.display} - {e.awayScore.display} {e.awayTeam.name}
-              </a>
-            </li>
-          </EventLink>
-        );
-      })}
-    </ul>
-  );
+export default function CategoryDetailsPage({ id }: CategoryPageInterface) {
+  return <CategoryDetails id={id} />;
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
@@ -33,9 +20,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     //@ts-ignore
     const { slug, id } = params;
 
-    const data = await fetcher(`${API_BASENAME}/category/${id}/scheduled-events/2022-05-28`);
+    //const data = await fetcher(`${API_BASENAME}/category/${id}/scheduled-events/2022-05-28`);
 
-    const props: CategoryPageInterface = { event: data.events };
+    const props: CategoryPageInterface = { id };
 
     return {
       props: props,
