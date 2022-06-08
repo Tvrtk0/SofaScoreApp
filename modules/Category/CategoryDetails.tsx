@@ -44,7 +44,10 @@ export default function CategoryDetails({ id }: CategoryDetailsProps) {
     return <div>An error has occurred...</div>;
   }
 
-  const events: FullEvent[] = data.events;
+  const datePickerDate = new Date(sportsContext?.date!).toDateString();
+  const events: FullEvent[] = data.events.filter(
+    (event: FullEvent) => new Date(event.startTimestamp * 1000).toDateString() === datePickerDate
+  );
 
   return (
     <StyledCategoryDetails>

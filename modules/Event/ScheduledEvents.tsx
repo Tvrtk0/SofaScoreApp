@@ -36,8 +36,8 @@ const StyledDatePicker = styled.div`
 `;
 
 export default function ScheduledEvents() {
-  const sportsInfo = useContext(SportContext);
-  const urlCategoryDetails = `${API_BASENAME}/sport/${sportsInfo?.sport}/scheduled-events/${sportsInfo?.date}`;
+  const sportsContext = useContext(SportContext);
+  const urlCategoryDetails = `${API_BASENAME}/sport/${sportsContext?.sport}/scheduled-events/${sportsContext?.date}`;
   const { data, error } = useSWR(urlCategoryDetails);
 
   if (!data && !error) {
@@ -47,13 +47,18 @@ export default function ScheduledEvents() {
     return <div>An error has occurred...</div>;
   }
 
+  const datePickerDate = new Date(sportsContext?.date!).toDateString();
+  const events: FullEvent[] = data.events.filter(
+    (event: FullEvent) => new Date(event.startTimestamp * 1000).toDateString() === datePickerDate
+  );
+
   return (
     <StyledScheduledEvents>
-      <h2>{sportsInfo?.sport.charAt(0).toUpperCase() + sportsInfo?.sport.slice(1)!}</h2>
+      <h2>{sportsContext?.sport.charAt(0).toUpperCase() + sportsContext?.sport.slice(1)!}</h2>
       <StyledDatePicker>
         <DatePicker />
       </StyledDatePicker>
-      <EventGroups events={data.events} />
+      <EventGroups events={events} />
     </StyledScheduledEvents>
   );
 }

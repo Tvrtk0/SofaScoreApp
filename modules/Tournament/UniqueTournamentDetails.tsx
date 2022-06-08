@@ -66,8 +66,12 @@ export default function UniqueTournamentDetails({ uniqueTournament }: UniqueTour
     return <div>An error has occurred...</div>;
   }
 
+  const datePickerDate = new Date(sportsContext?.date!).toDateString();
   const events: FullEvent[] = data.events.filter((event: FullEvent) => {
-    return event.tournament.uniqueTournament?.id === uniqueTournament.id;
+    return (
+      event.tournament.uniqueTournament?.id === uniqueTournament.id &&
+      new Date(event.startTimestamp * 1000).toDateString() === datePickerDate
+    );
   });
 
   const startDateTimestamp = new Date(uniqueTournament.startDateTimestamp * 1000).toLocaleDateString('en', {
