@@ -1,9 +1,27 @@
 import styled from 'styled-components';
 
+export const StyledEventContainer = styled.section`
+  display: flex;
+  gap: 2rem;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
+
+export const StyledFavoriteEvents = styled.section`
+  align-self: flex-start;
+  position: sticky;
+  top: 80px;
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileBreakpoint}) {
+    display: none;
+  }
+`;
+
 export const StyledEventDetails = styled.section`
   background-color: ${({ theme }) => theme.colors.bg1};
   padding: 2rem;
   border-radius: 10px;
+  margin-bottom: 2rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileBreakpoint}) {
     padding: 1rem;
