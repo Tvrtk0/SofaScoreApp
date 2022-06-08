@@ -4,6 +4,7 @@ import { SportContext } from '../context/sportContext';
 
 const StyledThemeIcon = styled.div`
   cursor: pointer;
+  padding: 0.6rem;
 `;
 
 export default function ThemeIcon() {

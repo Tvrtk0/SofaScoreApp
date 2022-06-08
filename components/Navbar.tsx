@@ -24,7 +24,7 @@ const StyledNavbar = styled.nav`
     & > ul {
       ${({ isMenuClicked }: { isMenuClicked: boolean }) => (isMenuClicked ? `` : `display: none !important;`)};
       flex-direction: column;
-      gap: 1.5rem !important;
+      gap: 2rem !important;
       flex-wrap: nowrap !important;
     }
   }
@@ -35,12 +35,12 @@ const StyledNavbar = styled.nav`
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 1rem;
   }
 
   & a {
     color: ${({ theme }) => theme.colors.text} !important;
     text-decoration: none;
+    padding: 1rem;
 
     &:hover {
       color: ${({ theme }) => theme.colors.primary} !important;
