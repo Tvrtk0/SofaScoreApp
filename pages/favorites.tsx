@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { FullEvent } from '../model/Event';
+import { SportContext } from '../context/sportContext';
+import { BasicEvent, FullEvent } from '../model/Event';
+import Event from '../modules/Event/Event';
 import EventGroups from '../modules/Event/EventGroups';
 
 const StyledFavorites = styled.div`
@@ -14,7 +16,7 @@ const StyledFavorites = styled.div`
     padding: 1rem 2rem;
     border-radius: 10px;
 
-    & > h3 {
+    & > p {
       text-align: center;
     }
   }
@@ -27,42 +29,17 @@ const StyledFavorites = styled.div`
 `;
 
 export default function Favorites() {
-  const [keys, setKeys] = useState<string[]>([]);
-  const [favoriteEvents, setfavoriteEvents] = useState<FullEvent[]>();
-
-  const updateKeys = () => {
-    let keysList = Object.keys(localStorage).filter((key) => {
-      return key.startsWith('favoriteEvent-');
-    });
-    setKeys(keysList);
-  };
-
-  useEffect(() => {
-    updateKeys();
-    window.addEventListener('storage', updateKeys);
-
-    return () => {
-      window.removeEventListener('storage', updateKeys);
-    };
-  }, []);
-
-  useEffect(() => {
-    let eventArray: FullEvent[] = [];
-
-    keys.forEach((key) => {
-      const eventJson: string | null = localStorage.getItem(key);
-      if (eventJson !== null) eventArray.push(JSON.parse(eventJson));
-    });
-
-    setfavoriteEvents(eventArray);
-  }, [keys]);
+  const sportContext = useContext(SportContext);
 
   return (
     <StyledFavorites>
       <h1>Favorite Events</h1>
       <section>
-        <h3>Football</h3>
-        {favoriteEvents && <EventGroups events={favoriteEvents!} />}
+        {sportContext?.favorites.length !== 0 ? (
+          <EventGroups events={sportContext?.favorites as FullEvent[]} />
+        ) : (
+          <p>No favorites found.</p>
+        )}
       </section>
     </StyledFavorites>
   );
