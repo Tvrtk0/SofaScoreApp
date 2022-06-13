@@ -2,6 +2,7 @@ import styled, { DefaultTheme } from 'styled-components';
 
 export const StyledAccordion = styled.li`
   cursor: pointer;
+  user-select: none;
   padding: 0.5rem 0.6rem;
   font-size: 0.9rem;
   border-radius: 5px;
@@ -17,6 +18,7 @@ export const StyledAccordion = styled.li`
 `;
 
 export const StyledAccordionItems = styled.ul`
+  user-select: none;
   list-style-type: none;
   font-size: 0.9rem;
   margin: 0.3rem 0;
