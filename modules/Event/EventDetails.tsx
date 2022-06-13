@@ -9,6 +9,7 @@ import {
   StyledEventContainer,
   StyledEventDetails,
   StyledEventDetailsHeader,
+  StyledEventInfo,
   StyledEventTitle,
   StyledFavoriteEvents,
   StyledTeam,
@@ -28,6 +29,7 @@ export default function EventDetails({ event }: EventDetailsProps) {
   const homeTeamImg = `${API_BASENAME}/team/${event.homeTeam.id}/image`;
   const awayTeamImg = `${API_BASENAME}/team/${event.awayTeam.id}/image`;
   const date = new Date(event.startTimestamp * 1000);
+
   const startDate = date.toLocaleString('en', {
     day: 'numeric',
     month: 'short',
@@ -39,14 +41,11 @@ export default function EventDetails({ event }: EventDetailsProps) {
 
   return (
     <StyledEventContainer>
-      <StyledFavoriteEvents>
-        <FavoriteEvents />
-      </StyledFavoriteEvents>
+      <Meta
+        title={`${event.homeTeam.name} - ${event.awayTeam.name}`}
+        description={`${event.tournament.name}: ${event.homeTeam.name} - ${event.awayTeam.name}`}
+      />
       <StyledEventDetails>
-        <Meta
-          title={`${event.homeTeam.name} - ${event.awayTeam.name}`}
-          description={`${event.tournament.name}: ${event.homeTeam.name} - ${event.awayTeam.name}`}
-        />
         <section>
           <StyledEventDetailsHeader>
             <CategoryLink category={event.tournament.category}>
@@ -77,35 +76,54 @@ export default function EventDetails({ event }: EventDetailsProps) {
           <StyledEventTitle>
             <h1>
               {event.homeScore.display} - {event.awayScore.display}
-              <FavoriteIcon event={event} /> <span></span>
             </h1>
-            <div>
-              <span>{startDate}</span>
-              <br />
-              <span>{startTime}</span>
-            </div>
+            <FavoriteIcon event={event} />
           </StyledEventTitle>
 
-          {event.venue && (
-            <>
-              <br />
-              <h4>Venue</h4>
-              <p>Country: {event.venue.country.name}</p>
-              <p>City: {event.venue.city.name}</p>
-              <p>Stadium: {event.venue.stadium.name}</p>
-            </>
-          )}
+          <StyledEventInfo>
+            <h2>Match information</h2>
 
-          {event.referee && (
-            <>
-              <br />
-              <h4>Referee</h4>
-              <p>{event.referee.name}</p>
-            </>
-          )}
+            <div>
+              <h4>Start date</h4>
+              <div>
+                <span>{startDate}</span>
+                <span>{startTime}</span>
+              </div>
+            </div>
+            {event.venue && (
+              <div>
+                <h4>Venue</h4>
+                <div>
+                  <span>
+                    Country: <br />
+                    City: <br />
+                    Stadium: <br />
+                  </span>
+                  <span>
+                    {event.venue.country.name} <br />
+                    {event.venue.city.name} <br />
+                    {event.venue.stadium.name} <br />
+                  </span>
+                </div>
+              </div>
+            )}
 
-          <EventStatistics eventId={event.id} />
+            {event.referee && (
+              <div>
+                <h4>Referee</h4>
+                <div>
+                  <span>Name: </span>
+                  <span>{event.referee.name}</span>
+                </div>
+              </div>
+            )}
+          </StyledEventInfo>
+
+          <StyledFavoriteEvents>
+            <FavoriteEvents />
+          </StyledFavoriteEvents>
         </section>
+        <EventStatistics eventId={event.id} />
       </StyledEventDetails>
     </StyledEventContainer>
   );

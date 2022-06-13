@@ -2,17 +2,17 @@ import styled from 'styled-components';
 
 export const StyledEventContainer = styled.section`
   display: flex;
-  gap: 2rem;
-  flex-direction: row-reverse;
   flex-wrap: wrap;
   justify-content: center;
 `;
 
 export const StyledFavoriteEvents = styled.section`
-  align-self: flex-start;
-  position: sticky;
+  & > section {
+    background-color: ${({ theme }) => theme.colors.bg2};
+  }
+  margin-top: 2rem;
   top: 80px;
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileBreakpoint}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.breakpoint2}) {
     display: none;
   }
 `;
@@ -22,9 +22,58 @@ export const StyledEventDetails = styled.section`
   padding: 2rem;
   border-radius: 10px;
   margin-bottom: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3rem;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileBreakpoint}) {
-    padding: 1rem;
+  @media (max-width: ${({ theme }) => theme.breakpoints.breakpoint2}) {
+    & > section {
+      flex-grow: 1;
+    }
+    padding: 2rem 0;
+    gap: 3rem 0;
+  }
+`;
+
+export const StyledEventInfo = styled.div`
+  margin-top: 2rem;
+  background-color: ${({ theme }) => theme.colors.bg2};
+  padding: 1rem;
+  border-radius: 10px;
+
+  & > div {
+    border-bottom: 2px solid ${({ theme }) => theme.colors.background};
+    margin-bottom: 2rem;
+  }
+
+  & > div:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+
+  & > h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  & div > h4 {
+    text-align: center;
+    background-color: ${({ theme }) => theme.colors.background};
+    padding: 0.4rem;
+    border-radius: 10px;
+  }
+
+  & div > div {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    padding: 1rem 0;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.breakpoint3}) {
+    background-color: ${({ theme }) => theme.colors.bg1};
+    padding: 0;
   }
 `;
 
@@ -56,6 +105,12 @@ export const StyledTeam = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.breakpoint2}) {
+    & > img {
+      width: 70px;
+    }
+  }
 `;
 
 export const StyledTeamSection = styled.div`
@@ -65,8 +120,7 @@ export const StyledTeamSection = styled.div`
   align-items: center;
   gap: 5rem;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileBreakpoint}) {
-    flex-direction: column;
+  @media (max-width: ${({ theme }) => theme.breakpoints.breakpoint2}) {
     padding: 0;
     gap: 2rem;
   }
@@ -76,8 +130,5 @@ export const StyledEventTitle = styled.div`
   text-align: center;
   & > h1 {
     margin: 1rem 0;
-  }
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileBreakpoint}) {
-    margin-top: 3rem;
   }
 `;
