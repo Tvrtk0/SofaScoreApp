@@ -9,7 +9,6 @@ const StyledHome = styled.section`
   gap: 3rem;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 2rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileBreakpoint}) {
     flex-direction: column-reverse;
