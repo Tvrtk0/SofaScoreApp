@@ -7,7 +7,6 @@ import { API_BASENAME } from '../../util/fetch';
 import EventStatisticsGroup from './EventStatisticsGroup';
 
 const StyledEventStatistics = styled.section`
-  margin-top: 3rem;
   padding: 1rem;
   border-radius: 10px;
   background-color: ${({ theme }) => theme.colors.bg2};
@@ -16,7 +15,7 @@ const StyledEventStatistics = styled.section`
     text-align: center;
   }
 
-  @media (max-width: 450px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.breakpoint3}) {
     padding: 0;
     background-color: ${({ theme }) => theme.colors.bg1};
   }

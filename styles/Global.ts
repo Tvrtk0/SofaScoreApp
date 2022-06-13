@@ -16,7 +16,7 @@ const GlobalStyles = createGlobalStyle`
         min-height: 100vh;
     }
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobileBreakpoint}) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.breakpoint2}) {
         body {
             background-color: ${({ theme }) => theme.colors.bg1};
         }

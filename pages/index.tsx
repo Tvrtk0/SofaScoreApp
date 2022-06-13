@@ -10,7 +10,7 @@ const StyledHome = styled.section`
   flex-wrap: wrap;
   justify-content: center;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileBreakpoint}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.breakpoint2}) {
     flex-direction: column-reverse;
     align-items: center;
     justify-content: center;
@@ -29,7 +29,7 @@ const StyledFavoriteEvents = styled.section`
   align-self: flex-start;
   position: sticky;
   top: 80px;
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileBreakpoint}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.breakpoint2}) {
     position: relative;
     align-self: center;
     top: 0;

@@ -12,7 +12,7 @@ const StyledLayout = styled.main`
   flex-direction: column;
   align-items: center;
   margin: 2rem;
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileBreakpoint}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.breakpoint2}) {
     margin-top: 0rem;
   }
 `;

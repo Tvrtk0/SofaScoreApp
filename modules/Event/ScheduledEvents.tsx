@@ -13,7 +13,7 @@ const StyledScheduledEvents = styled.ul`
   padding: 2rem;
   border-radius: 10px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileBreakpoint}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.breakpoint2}) {
     padding: 1rem;
   }
 

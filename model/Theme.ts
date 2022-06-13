@@ -18,8 +18,9 @@ declare module 'styled-components' {
       light: string;
     };
     breakpoints: {
-      mobileBreakpoint: string;
       breakpoint1: string;
+      breakpoint2: string;
+      breakpoint3: string;
     };
   }
 }

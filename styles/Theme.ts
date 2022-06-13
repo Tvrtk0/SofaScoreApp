@@ -17,8 +17,9 @@ export const darkTheme: DefaultTheme = {
     light: '#b0b8ca',
   },
   breakpoints: {
-    mobileBreakpoint: '600px',
     breakpoint1: '1200px',
+    breakpoint2: '600px',
+    breakpoint3: '450px',
   },
 };
 
@@ -39,7 +40,8 @@ export const lightTheme: DefaultTheme = {
     light: '#b0b8ca',
   },
   breakpoints: {
-    mobileBreakpoint: '600px',
     breakpoint1: '1200px',
+    breakpoint2: '600px',
+    breakpoint3: '450px',
   },
 };

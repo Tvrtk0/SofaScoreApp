@@ -18,7 +18,7 @@ const StyledNavbar = styled.nav`
   justify-content: center;
   background-color: ${({ theme }) => theme.colors.bg2};
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileBreakpoint}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.breakpoint2}) {
     background-color: ${({ theme }) => theme.colors.background};
     box-shadow: none;
     height: auto;
