@@ -16,6 +16,7 @@ export interface CategoryInfo {
     id: number;
     name: string;
     slug: string;
+    sport: Sport;
     priority: number;
   };
   uniqueTournamentIds?: number[];
