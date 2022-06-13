@@ -14,10 +14,13 @@ const StyledNavbar = styled.nav`
   padding: 0.6rem 1rem;
   display: flex;
   position: sticky;
+  box-shadow: 0 7px 5px ${({ theme }) => theme.colors.background};
   justify-content: center;
-  background-color: ${({ theme }) => theme.colors.background};
+  background-color: ${({ theme }) => theme.colors.bg2};
 
-  @media (max-width: 600px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileBreakpoint}) {
+    background-color: ${({ theme }) => theme.colors.background};
+    box-shadow: none;
     height: auto;
     flex-direction: column;
     align-items: center;
