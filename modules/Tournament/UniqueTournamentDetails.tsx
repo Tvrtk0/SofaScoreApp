@@ -19,7 +19,7 @@ const StyledUniqueTournamentDetails = styled.section`
   margin: 0 2rem;
   border-radius: 10px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileBreakpoint}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.breakpoint2}) {
     margin: 0;
     padding: 1rem;
   }
@@ -74,25 +74,35 @@ export default function UniqueTournamentDetails({ uniqueTournament }: UniqueTour
     );
   });
 
-  const startDateTimestamp = new Date(uniqueTournament.startDateTimestamp * 1000).toLocaleDateString('en', {
-    day: 'numeric',
-    month: 'short',
-    year: 'numeric',
-  });
-  const endDateTimestamp = new Date(uniqueTournament.endDateTimestamp * 1000).toLocaleDateString('en', {
-    day: 'numeric',
-    month: 'short',
-    year: 'numeric',
-  });
+  const startDateTimestamp =
+    uniqueTournament.startDateTimestamp !== undefined
+      ? new Date(uniqueTournament.startDateTimestamp * 1000).toLocaleDateString('en', {
+          day: 'numeric',
+          month: 'short',
+          year: 'numeric',
+        })
+      : undefined;
+  const endDateTimestamp =
+    uniqueTournament.startDateTimestamp !== undefined
+      ? new Date(uniqueTournament.endDateTimestamp * 1000).toLocaleDateString('en', {
+          day: 'numeric',
+          month: 'short',
+          year: 'numeric',
+        })
+      : undefined;
+
+  console.log(startDateTimestamp);
 
   return (
     <StyledUniqueTournamentDetails>
       <Meta title={uniqueTournament.name} description={`${uniqueTournament.name} - all events`} />
       <img src={imageUrl} alt={uniqueTournament.name} />
       <h1>{uniqueTournament.name}</h1>
-      <p>
-        {startDateTimestamp} - {endDateTimestamp}
-      </p>
+      {startDateTimestamp && (
+        <p>
+          {startDateTimestamp} - {endDateTimestamp}
+        </p>
+      )}
       {uniqueTournament.titleHolder && <small>Title holder: {uniqueTournament.titleHolder.name}</small>}
       <StyledDatePicker>
         <DatePicker />
