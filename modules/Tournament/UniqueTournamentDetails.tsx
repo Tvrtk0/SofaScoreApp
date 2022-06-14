@@ -91,8 +91,6 @@ export default function UniqueTournamentDetails({ uniqueTournament }: UniqueTour
         })
       : undefined;
 
-  console.log(startDateTimestamp);
-
   return (
     <StyledUniqueTournamentDetails>
       <Meta title={uniqueTournament.name} description={`${uniqueTournament.name} - all events`} />
