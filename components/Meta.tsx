@@ -13,6 +13,7 @@ export default function Meta({ title, description }: MetaProps) {
       <title>{title}</title>
       <meta name="description" content={description} />
       <meta name="author" content="Tvrtko Babić" />
+      <meta name="google-site-verification" content="248Irj9vU9g4I-oOdUQKgKN1D61ovJHLhDfqlNYal9s" />
     </Head>
   );
 }
